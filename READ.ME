@@ -1,0 +1,166 @@
+
+# Todo Application
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Testing](#testing)
+- [Docker Setup](#docker-setup)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Overview
+
+This is a simple Todo Application built using Spring Boot. The application allows users to create, read, update, and delete todo items. It also provides RESTful APIs for easy integration with other applications or front-end frameworks.
+
+## Features
+
+- **Create Todo**: Add new todo items.
+- **Read Todo**: Retrieve a list of all todos or a specific todo by ID.
+- **Update Todo**: Modify existing todo items.
+- **Delete Todo**: Remove todo items.
+- **Pagination**: Support for paginated results when fetching todos.
+- **Unit Testing**: Comprehensive test coverage for the service layer.
+
+## Technologies Used
+
+- **Java**: Version 17
+- **Spring Boot**: Framework for building RESTful APIs
+- **PostgreSQL**: Database for storing todo items
+- **Maven**: Dependency management and build tool
+- **Docker**: Containerization for easier deployment
+- **JUnit & Mockito**: For unit testing
+
+## Installation
+
+### Prerequisites
+
+- Java 17 or higher
+- Maven
+- PostgreSQL
+- Docker (optional, for containerization)
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/todo-app.git
+cd todo-app
+```
+
+### Set Up PostgreSQL
+
+1. Create a PostgreSQL database named `todo_db`.
+2. Update the `application.properties` file in `src/main/resources` with your database credentials:
+
+   ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/todo_db
+   spring.datasource.username=your_username
+   spring.datasource.password=your_password
+   ```
+
+### Build the Application
+
+```bash
+mvn clean package
+```
+
+### Run the Application
+
+```bash
+mvn spring-boot:run
+```
+
+## Usage
+
+Once the application is running, you can access the API at `http://localhost:8080/api/todos`.
+
+### Example Requests
+
+- **Create Todo**:
+
+  ```bash
+  curl -X POST http://localhost:8080/api/todos \
+       -H "Content-Type: application/json" \
+       -d '{"title": "Learn Spring Boot", "dueDate": "2024-12-31T23:59:59"}'
+  ```
+  
+- **Get All Todos**:
+
+  ```bash
+  curl http://localhost:8080/api/todos
+  ```
+
+- **Get Todo by ID**:
+
+  ```bash
+  curl http://localhost:8080/api/todos/{id}
+  ```
+
+- **Update Todo**:
+
+  ```bash
+  curl -X PUT http://localhost:8080/api/todos/{id} \
+       -H "Content-Type: application/json" \
+       -d '{"title": "Updated Todo", "dueDate": "2024-12-31T23:59:59"}'
+  ```
+
+- **Delete Todo**:
+
+  ```bash
+  curl -X DELETE http://localhost:8080/api/todos/{id}
+  ```
+
+## API Endpoints
+
+| Method | Endpoint                  | Description                      |
+|--------|---------------------------|----------------------------------|
+| POST   | /api/todos                | Create a new todo               |
+| GET    | /api/todos                | Retrieve all todos              |
+| GET    | /api/todos/{id}          | Retrieve a specific todo        |
+| PUT    | /api/todos/{id}          | Update a specific todo          |
+| DELETE | /api/todos/{id}          | Delete a specific todo          |
+
+## Testing
+
+To run the unit tests for the application, use:
+
+```bash
+mvn test
+```
+
+## Docker Setup
+
+To run the application using Docker, follow these steps:
+
+1. Build the Docker image:
+
+   ```bash
+   docker build -t todo-app .
+   ```
+
+2. Start the application and PostgreSQL using Docker Compose:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request if you have suggestions or improvements.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+### Customization
+
+Make sure to replace placeholders like `your-username` and any specific details that are unique to your project. Feel free to add or remove sections based on your project requirements.
+
+Would you like to proceed with any other tasks, or do you have questions about the README file?
